@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://prhs8btv8hq"]
+
+[ext_resource type="Texture2D" uid="uid://cqlmem6ktso2l" path="res://assets/items/ShootingFlower.png" id="1_fhy7d"]
+[ext_resource type="Script" path="res://scripts/shooting_flower.gd" id="1_ml1sm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85mw7"]
+size = Vector2(16, 16)
+
+[node name="ShootingFlower" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_ml1sm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fhy7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_85mw7")

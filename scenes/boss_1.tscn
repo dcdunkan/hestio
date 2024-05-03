@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dghad5pgax8t8"]
+
+[ext_resource type="Texture2D" uid="uid://bhmdp4wyxa1k8" path="res://assetsx2/Chars/aiml.png" id="1_1q8a0"]
+[ext_resource type="Texture2D" uid="uid://dmlp101ef0iqg" path="res://assetsx/Chars/AIML_boss.png" id="1_a10g5"]
+[ext_resource type="Script" path="res://scripts/boss_1.gd" id="1_lys82"]
+[ext_resource type="Texture2D" uid="uid://brj71xxyjhojk" path="res://assetsx2/Chars/AIML_boss_fly.png" id="3_j3u8v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_caoxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1q8a0")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j3u8v")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a10g5")
+}],
+"loop": true,
+"name": &"glide",
+"speed": 4.0
+}]
+
+[node name="Boss_AIML" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 63
+script = ExtResource("1_lys82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_caoxs")
+animation = &"fly"
+autoplay = "glide"
+frame_progress = 0.67976
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0.499999)
+scale = Vector2(1.5, 1.55)
+polygon = PackedVector2Array(-4, -10, -6, -9.35484, -7.33333, -8.06452, -8, -6.77419, -8, -5.48387, -7.33333, -4.83871, -8, -4.19355, -10, -4.19355, -10.6667, -2.25806, -10, -0.32258, -10, 0.967743, -9.33333, 2.25807, -8.66667, 4.83871, -8, 5.48387, -8, 6.77419, -6.66667, 8.06452, -6, 7.41936, -4.66667, 7.41936, -3.33333, 7.41936, -2, 7.41936, -9.53674e-07, 7.41936, 1.33333, 6.77419, 2.66667, 6.12903, 4, 6.12903, 4.66667, 5.48387, 6, 5.48387, 6, 6.12903, 6, 6.77419, 6.66667, 6.77419, 7.33333, 7.41936, 9.33333, 7.41936, 10, 6.77419, 9.33333, 5.48387, 9.33333, 3.54839, 9.33333, 2.25807, 10, 0.322582, 9.33333, -0.967741, 8.66667, -2.90322, 8, -2.90322, 7.33333, -4.83871, 6.66667, -4.83871, 6, -5.48387, 5.33333, -6.12903, 4, -7.41935, 3.33333, -8.06452, 2.66667, -8.70968, 2, -9.35484, 1.33333, -10, -9.53674e-07, -10, -2.66667, -10)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 53)
+collision_mask = 2

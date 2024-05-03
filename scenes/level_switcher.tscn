@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxownos1lxm2s"]
+
+[ext_resource type="Script" path="res://scripts/level_switcher.gd" id="1_hbmf1"]
+[ext_resource type="Texture2D" uid="uid://dh2n507fr735o" path="res://assetsx2/Env/gate.png" id="2_0cqhh"]
+[ext_resource type="Texture2D" uid="uid://5twh8d5ku7hd" path="res://assetsx2/Env/gate3.png" id="3_r5pny"]
+[ext_resource type="Texture2D" uid="uid://7t5ntjw3hrpm" path="res://assetsx2/Env/gate2.png" id="4_bckg8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eh0ss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0cqhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("2_0cqhh")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_r5pny")
+}, {
+"duration": 4.0,
+"texture": ExtResource("4_bckg8")
+}],
+"loop": false,
+"name": &"open",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgwl5"]
+size = Vector2(65, 97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_466jk"]
+size = Vector2(145, 80)
+
+[node name="LevelSwitcher" type="Node2D"]
+script = ExtResource("1_hbmf1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_eh0ss")
+animation = &"open"
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(27, -9)
+shape = SubResource("RectangleShape2D_qgwl5")
+debug_color = Color(0.947125, 0.070448, 0.546508, 0.42)
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(-9.5, 0)
+shape = SubResource("RectangleShape2D_466jk")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

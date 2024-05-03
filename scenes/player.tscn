@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5dnh0g02i5wh"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_acl3p"]
+[ext_resource type="Texture2D" uid="uid://c116bv1vogq7x" path="res://assets/characters/mario/Mario_Small_Death.png" id="2_vpcnf"]
+[ext_resource type="Texture2D" uid="uid://cw46ujyhgdjq3" path="res://assets/characters/mario/Mario_Small_Idle.png" id="3_1ojyj"]
+[ext_resource type="Texture2D" uid="uid://boqkyxgeyft31" path="res://assets/characters/mario/Mario_Small_Jump.png" id="4_bqi2f"]
+[ext_resource type="Texture2D" uid="uid://bruj1vupdhsj4" path="res://assets/characters/mario/Mario_Small_Run1.png" id="5_y3o2x"]
+[ext_resource type="Texture2D" uid="uid://bf7ghhdn406wm" path="res://assets/characters/mario/Mario_Small_Run2.png" id="6_tkswf"]
+[ext_resource type="Texture2D" uid="uid://b4modd62aodk2" path="res://assets/characters/mario/Mario_Small_Run3.png" id="7_op738"]
+[ext_resource type="Texture2D" uid="uid://ciayy2bbp1fjd" path="res://assets/characters/mario/Mario_Small_Slide.png" id="8_pnt80"]
+[ext_resource type="Script" path="res://scripts/player_animated_sprite.gd" id="24_rna70"]
+[ext_resource type="Shape2D" uid="uid://b7jouqfuw62w4" path="res://resource/small_mario_collision.tres" id="24_xq2cq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylfck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vpcnf")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1ojyj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bqi2f")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_y3o2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tkswf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_op738")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pnt80")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 63
+script = ExtResource("1_acl3p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ylfck")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("24_rna70")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 63
+
+[node name="AreaCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("24_xq2cq")
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("24_xq2cq")
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(7, -5)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

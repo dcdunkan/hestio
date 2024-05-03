@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c74wd5y71xmhm"]
+
+[ext_resource type="Script" path="res://scripts/points_label.gd" id="1_bw1tu"]
+[ext_resource type="FontFile" uid="uid://2lqhy7e5t254" path="res://assets/fonts/font.ttf" id="1_qn1xt"]
+
+[node name="PointsLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_qn1xt")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_bw1tu")

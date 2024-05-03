@@ -1,0 +1,6 @@
+[submodule "assetsx2"]
+	path = assetsx2
+	url = https://github.com/swassyman/SMB-Hestia-assets
+[submodule "assetsx"]
+	path = assetsx
+	url = https://github.com/swassyman/SMB-Hestia-assets

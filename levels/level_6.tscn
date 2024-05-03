@@ -1,0 +1,104 @@
+[gd_scene load_steps=21 format=3 uid="uid://bir2orfh6vc7h"]
+
+[ext_resource type="Texture2D" uid="uid://gxf8p5fh685o" path="res://assets/blocks/Brick.png" id="1_2o20q"]
+[ext_resource type="Texture2D" uid="uid://cbq86lmt1ofco" path="res://assets/blocks/GroundBlock.png" id="2_8hts5"]
+[ext_resource type="Texture2D" uid="uid://bx4opl83br4a7" path="res://assets/blocks/HardBlock.png" id="3_esdbu"]
+[ext_resource type="Texture2D" uid="uid://dnlcoaexbyyr" path="res://assets/blocks/UndergroundBlock.png" id="4_c8hh2"]
+[ext_resource type="Texture2D" uid="uid://dm7gsuu3pullf" path="res://assets/blocks/UndergroundBrick.png" id="5_5rcxx"]
+[ext_resource type="PackedScene" uid="uid://c5dnh0g02i5wh" path="res://scenes/player.tscn" id="6_2xswc"]
+[ext_resource type="PackedScene" uid="uid://bxhfqi44svsw7" path="res://scenes/checkpoint.tscn" id="7_ccf2v"]
+[ext_resource type="PackedScene" uid="uid://cw21d2wt6y7i7" path="res://scenes/goomba.tscn" id="8_bokgm"]
+[ext_resource type="PackedScene" uid="uid://bbu2dtqu3vow6" path="res://scenes/koopa.tscn" id="9_hhkfq"]
+[ext_resource type="PackedScene" uid="uid://cyhuabdsq5xb0" path="res://scenes/firestick.tscn" id="10_cg0p7"]
+[ext_resource type="PackedScene" uid="uid://6pb2aj4eta0w" path="res://scenes/brick.tscn" id="11_um7dh"]
+[ext_resource type="PackedScene" uid="uid://dr7crf4rx2p5e" path="res://scenes/mystery_box.tscn" id="12_pf2uf"]
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="13_rumpj"]
+[ext_resource type="PackedScene" uid="uid://bxownos1lxm2s" path="res://scenes/level_switcher.tscn" id="14_610o0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m5dne"]
+texture = ExtResource("1_2o20q")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d23i"]
+texture = ExtResource("2_8hts5")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0463"]
+texture = ExtResource("3_esdbu")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk371"]
+texture = ExtResource("4_c8hh2")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27gyj"]
+texture = ExtResource("5_5rcxx")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_7vpch"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_m5dne")
+sources/1 = SubResource("TileSetAtlasSource_7d23i")
+sources/2 = SubResource("TileSetAtlasSource_b0463")
+sources/3 = SubResource("TileSetAtlasSource_bk371")
+sources/4 = SubResource("TileSetAtlasSource_27gyj")
+
+[node name="level_1" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_7vpch")
+format = 2
+layer_0/tile_data = PackedInt32Array(393203, 1, 0, 458739, 1, 0, 524275, 1, 0, 393204, 1, 0, 458740, 1, 0, 524276, 1, 0, 393205, 1, 0, 458741, 1, 0, 524277, 1, 0, 393206, 1, 0, 458742, 1, 0, 524278, 1, 0, 393207, 1, 0, 458743, 1, 0, 524279, 1, 0, 393208, 1, 0, 458744, 1, 0, 524280, 1, 0, 393209, 1, 0, 458745, 1, 0, 524281, 1, 0, 393210, 1, 0, 458746, 1, 0, 524282, 1, 0, 393211, 1, 0, 458747, 1, 0, 524283, 1, 0, 393212, 1, 0, 458748, 1, 0, 524284, 1, 0, 393213, 1, 0, 458749, 1, 0, 524285, 1, 0, 393214, 1, 0, 458750, 1, 0, 524286, 1, 0, 393215, 1, 0, 458751, 1, 0, 524287, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 327681, 1, 0, 393217, 1, 0, 458753, 1, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 327683, 1, 0, 393219, 1, 0, 458755, 1, 0, 327684, 1, 0, 393220, 1, 0, 458756, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 1, 0, 327686, 1, 0, 393222, 1, 0, 458758, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 1, 0, 327688, 1, 0, 393224, 1, 0, 458760, 1, 0, 327689, 1, 0, 393225, 1, 0, 458761, 1, 0, 327690, 1, 0, 393226, 1, 0, 458762, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 1, 0, 327692, 1, 0, 393228, 1, 0, 458764, 1, 0, 327693, 1, 0, 393229, 1, 0, 458765, 1, 0, 393202, 1, 0, 458738, 1, 0, 524274, 1, 0, 327694, 0, 0, 393230, 0, 0, 458766, 0, 0, 458767, 0, 0, 393231, 0, 0, 327695, 3, 0, 327696, 3, 0, 393232, 0, 0, 458768, 0, 0, 327697, 0, 0, 393233, 0, 0, 458769, 0, 0, 458770, 0, 0, 327698, 0, 0, 393234, 0, 0, 262159, 1, 0, 262160, 3, 0, 196624, 3, 0, 131089, 3, 0, 131090, 3, 0, 196626, 1, 0, 262162, 3, 0, 262161, 3, 0, 196625, 3, 0, 65554, 3, 0, 65555, 3, 0, 131091, 3, 0, 196627, 3, 0, 262163, 1, 0, 327699, 1, 0, 393235, 1, 0, 458771, 1, 0, 458772, 1, 0, 393236, 3, 0, 327700, 1, 0, 262165, 1, 0, 196629, 1, 0, 131093, 3, 0, 65557, 3, 0, 65556, 1, 0, 20, 3, 0, -65516, 1, 0, 131092, 3, 0, 196628, 1, 0, 262164, 1, 0, 458773, 1, 0, 393237, 3, 0, 327701, 3, 0, 21, 1, 0, -65515, 1, 0, -131050, 1, 0, -131051, 1, 0, -65514, 1, 0, 22, 3, 0, 65558, 3, 0, 131094, 3, 0, 196630, 3, 0, 262166, 3, 0, 327702, 3, 0, 393238, 1, 0, 458774, 1, 0, 19, 3, 0, -131049, 3, 0, -65513, 3, 0, 23, 3, 0, 65559, 3, 0, 131095, 3, 0, 196631, 3, 0, 262167, 3, 0, 327703, 3, 0, 393239, 3, 0, 458775, 3, 0, 524311, 3, 0, 524312, 3, 0, 458777, 3, 0, 393241, 3, 0, 393242, 3, 0, 327706, 3, 0, 262171, 3, 0, 196635, 3, 0, 131099, 3, 0, 131100, 3, 0, 65564, 3, 0, 28, 3, 0, -65508, 3, 0, -131044, 3, 0, -196580, 3, 0, -196579, 3, 0, -131043, 3, 0, -65507, 3, 0, 196634, 3, 0, 262169, 3, 0, 327705, 3, 0, 327704, 3, 0, 65560, 3, 0, 24, 3, 0, 25, 3, 0, -65511, 3, 0, -65510, 3, 0, -65509, 3, 0, 27, 3, 0, 131098, 3, 0, 65562, 3, 0, 26, 3, 0, -131046, 3, 0, -196581, 3, 0, -262116, 3, 0, -262115, 3, 0, -327650, 3, 0, -327649, 3, 0, -262113, 3, 0, -196577, 3, 0, -131041, 3, 0, -65505, 3, 0, 30, 3, 0, 65566, 3, 0, 65565, 3, 0, 262168, 3, 0, -131048, 3, 0, -196583, 3, 0, -196582, 3, 0, -196578, 3, 0, -196576, 3, 0, -131040, 3, 0, 31, 3, 0, 196633, 3, 0, 131097, 3, 0, 65563, 3, 0, 29, 3, 0, -65506, 3, 0, -131047, 3, 0, -65512, 3, 0, 196632, 3, 0, 131096, 3, 0, 262170, 3, 0, 196636, 3, 0, 262172, 3, 0, 65561, 3, 0, -131045, 3, 0, -262114, 3, 0, -131042, 3, 0, 65567, 3, 0, 131102, 3, 0, 131101, 3, 0, 196637, 3, 0, 458776, 3, 0, 524313, 3, 0, 524314, 3, 0, 458779, 3, 0, 458780, 3, 0, 458781, 3, 0, 458782, 3, 0, 458783, 3, 0, 458784, 3, 0, 393249, 3, 0, 393250, 3, 0, 458785, 3, 0, 458778, 3, 0, 393240, 3, 0, 393243, 3, 0, 393244, 3, 0, 327709, 3, 0, 327710, 3, 0, 327711, 3, 0, 327712, 3, 0, 393245, 3, 0, 393246, 3, 0, 393247, 3, 0, 393248, 3, 0, 327708, 3, 0, 327707, 3, 0, 262173, 3, 0, 262174, 3, 0, 262175, 3, 0, 196639, 3, 0, 196638, 3, 0, -65504, 3, 0, -65503, 3, 0, -131039, 3, 0, -131038, 3, 0, -262119, 3, 0, -262118, 3, 0, -262117, 3, 0, -262112, 3, 0, -262111, 3, 0, -262110, 3, 0, -262109, 3, 0, -327645, 3, 0, -327646, 3, 0, -327647, 3, 0, -327648, 3, 0, -327651, 3, 0, -327652, 3, 0, -327653, 3, 0, -327654, 3, 0, -327655, 3, 0, -327644, 3, 0, -327643, 3, 0, -262107, 3, 0, -196571, 3, 0, -196572, 3, 0, -196573, 3, 0, -196574, 3, 0, -196575, 3, 0, -262108, 3, 0, -196584, 3, 0, -196585, 3, 0, -196586, 3, 0, -262120, 3, 0, 65553, 3, 0, 17, 3, 0, 16, 3, 0, 65552, 3, 0, 65551, 3, 0, 18, 3, 0, 15, 3, 0, 131087, 3, 0, 196623, 3, 0, 131088, 3, 0, 131086, 3, 0, 196622, 3, 0, 262158, 3, 0, 196621, 3, 0, 262157, 3, 0, 262156, 3, 0, 65550, 3, 0, 131085, 3, 0, 196620, 3, 0, 262155, 3, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.75, 2.75)
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_2xswc")]
+position = Vector2(-208, 56)
+collision_mask = 22
+camera_sync = NodePath("../Camera2D")
+
+[node name="Checkpoint" parent="." instance=ExtResource("7_ccf2v")]
+position = Vector2(-9, 61)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Goomba" parent="Enemies" instance=ExtResource("8_bokgm")]
+position = Vector2(102, 59)
+
+[node name="Koopa" parent="Enemies" instance=ExtResource("9_hhkfq")]
+position = Vector2(153, 61)
+
+[node name="Firestick" parent="Enemies" instance=ExtResource("10_cg0p7")]
+position = Vector2(-133, 37)
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="Brick" parent="Blocks" instance=ExtResource("11_um7dh")]
+position = Vector2(41, 17)
+
+[node name="MysteryBox" parent="Blocks" instance=ExtResource("12_pf2uf")]
+position = Vector2(114, 23)
+bonus_type = 1
+
+[node name="LevelManager" type="Node" parent="." groups=["level_manager"]]
+script = ExtResource("13_rumpj")
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("14_610o0")]
+position = Vector2(528, -118)
