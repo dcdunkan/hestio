@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr7crf4rx2p5e"]
+[gd_scene load_steps=10 format=3 uid="uid://dr7crf4rx2p5e"]
 
 [ext_resource type="Script" path="res://scripts/mystery_box.gd" id="1_uo46e"]
 [ext_resource type="Texture2D" uid="uid://b8vjdbmjxpbmj" path="res://assetsx2/Env/OverWorld.png" id="2_qeny8"]
+[ext_resource type="AudioStream" uid="uid://co80tet0bpwad" path="res://assetsx2/Soundfs/bump.mp3" id="3_b38qx"]
+[ext_resource type="AudioStream" uid="uid://cxvski41psnok" path="res://assetsx2/Soundfs/1up_appears.mp3" id="3_ty24e"]
+[ext_resource type="AudioStream" uid="uid://cwdpija4c7uai" path="res://assetsx2/Soundfs/coin.mp3" id="4_iv65j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngiqr"]
 atlas = ExtResource("2_qeny8")
@@ -52,3 +55,12 @@ target_position = Vector2(0, -10)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="1UpAppears" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ty24e")
+
+[node name="Coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_iv65j")
+
+[node name="Bump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b38qx")

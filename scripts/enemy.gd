@@ -8,20 +8,38 @@ const POINTS_LABEL_SCENE = preload("res://scenes/points_label.tscn")
 @onready var points_value: int
 @export var is_idle: bool = false
 
-@onready var ray_cast = $RayCast2D as RayCast2D
+@onready var left_ray_cast = $LeftRayCast2D as RayCast2D
+@onready var right_ray_cast = $RightRayCast2D as RayCast2D
+@onready var down_ray_cast = $DownRayCast2D as RayCast2D
 @onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 
-var scale_factor = Vector2(1.2, 1.2)
+var scale_factor = Vector2(0.07, 0.07)
+var global_position_factor = Vector2(0.5, 0.0)
+var is_idle_animation_playing = false
+var is_inhaling = true
+
+var ignore_left_collision = false
+var ignore_right_collision = true
 
 func _process(delta):
+	if not down_ray_cast.is_colliding() and not is_idle_animation_playing:
+		position.y += delta * vertical_speed
 	if not is_idle:
 		position.x -= delta * horizontal_speed
-		if not ray_cast.is_colliding():
-			position.y += delta * vertical_speed
-	#else:
-		#var tween = get_tree().create_tween()
-		#
-		#tween.tween_property(self, "scale", )
+		# the looped left right collision movements
+		if (left_ray_cast.is_colliding() and not ignore_left_collision) or (right_ray_cast.is_colliding() and not ignore_right_collision):
+			horizontal_speed = -horizontal_speed
+			ignore_left_collision = !ignore_left_collision
+			ignore_right_collision = !ignore_right_collision
+	elif down_ray_cast.is_colliding() and not is_idle_animation_playing:
+		is_idle_animation_playing = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "scale", scale + (scale_factor if is_inhaling else -scale_factor), 0.5)
+		tween.tween_property(self, "global_position", global_position - (global_position_factor if is_inhaling else -global_position_factor), 0.5)
+		tween.tween_callback(func ():
+			is_idle_animation_playing = false
+			is_inhaling = !is_inhaling
+		)
 
 func die():
 	horizontal_speed = 0
@@ -29,7 +47,6 @@ func die():
 	sprite.play("death")
 	
 func die_from_hit():
-	print("dying from hit")
 	set_collision_layer_value(3, false)
 	set_collision_mask_value(3, false)
 	rotation_degrees = 180

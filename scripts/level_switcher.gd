@@ -2,6 +2,8 @@ extends Node2D
 class_name LevelSwitcher
 
 @onready var sprite = $Sprite2D
+@onready var stage_clear_sound = $"Stage Clear Sound"
+@onready var bgm = $"../Sounds/BGM"
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.get_parent() is Player:
@@ -10,6 +12,8 @@ func _on_area_2d_area_entered(area: Area2D):
 
 func _on_area_2d_2_body_entered(body):
 	if body is Player:
+		bgm.stop()
+		stage_clear_sound.play()
 		var animated_sprite = body.get_children()[0] as AnimatedSprite2D
 		body.set_physics_process(false)
 		animated_sprite.stop()

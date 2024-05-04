@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://gspktx65y0s2"]
+[gd_scene load_steps=23 format=3 uid="uid://gspktx65y0s2"]
 
+[ext_resource type="Script" path="res://scripts/level_3.gd" id="1_s1orr"]
 [ext_resource type="Texture2D" uid="uid://ddyjqt3bc5ay8" path="res://assetsx2/Bgs/cloud.png" id="1_v0jd5"]
 [ext_resource type="Texture2D" uid="uid://dgmh5ffw4so1k" path="res://assetsx2/Bgs/canteen.png" id="2_mhn8x"]
 [ext_resource type="PackedScene" uid="uid://82p422hvx61p" path="res://scenes/Piranha.tscn" id="3_tc0pt"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="13_ki5bk"]
 [ext_resource type="PackedScene" uid="uid://cb5yaui2s0hue" path="res://scenes/static_spike.tscn" id="15_ac8iu"]
 [ext_resource type="PackedScene" uid="uid://bmpxo04x5rgc" path="res://scenes/MovingFireball.tscn" id="15_uvvrk"]
+[ext_resource type="PackedScene" uid="uid://kahb14nseb2d" path="res://resource/sounds.tscn" id="16_cjuct"]
 [ext_resource type="PackedScene" uid="uid://bbu2dtqu3vow6" path="res://scenes/koopa.tscn" id="19_8l1eu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1fke4"]
@@ -182,7 +184,8 @@ _data = {
 "up and downl": SubResource("Animation_3mw4j")
 }
 
-[node name="level_1" type="Node"]
+[node name="level_3" type="Node"]
+script = ExtResource("1_s1orr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -674.0
@@ -335,7 +338,7 @@ position = Vector2(926, -249)
 position = Vector2(-170, -164)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_objr1")]
-position = Vector2(-287, 61)
+position = Vector2(623, -212)
 collision_mask = 22
 camera_sync = NodePath("../Camera2D")
 
@@ -378,18 +381,18 @@ position = Vector2(-85, -157)
 
 [node name="Piranha" parent="." instance=ExtResource("3_tc0pt")]
 position = Vector2(206, -155)
-collision_layer = 4
 collision_mask = 3
+is_idle = true
 
 [node name="Piranha2" parent="." instance=ExtResource("3_tc0pt")]
 position = Vector2(262, -156)
-collision_layer = 4
 collision_mask = 3
+is_idle = true
 
 [node name="Piranha3" parent="." instance=ExtResource("3_tc0pt")]
 position = Vector2(316, -155)
-collision_layer = 4
 collision_mask = 3
+is_idle = true
 
 [node name="MovingFireball2" parent="." instance=ExtResource("15_uvvrk")]
 position = Vector2(286, -203)
@@ -416,3 +419,5 @@ position = Vector2(472, -162)
 
 [node name="Koopa2" parent="." instance=ExtResource("19_8l1eu")]
 position = Vector2(498, -162)
+
+[node name="Sounds" parent="." instance=ExtResource("16_cjuct")]

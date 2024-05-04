@@ -11,6 +11,9 @@ const COIN_SCENE = preload("res://scenes/coin.tscn")
 const SHROOM_SCENE = preload("res://scenes/shroom.tscn")
 const SHOOTING_FLOWER_SCENE = preload("res://scenes/shooting_flower.tscn")
 
+@onready var _1_up_appears_sound = $"1UpAppears"
+@onready var coin_sound = $Coin
+
 @onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 
 @export var bonus_type: BonusType = BonusType.Coin
@@ -45,6 +48,7 @@ func empty_box():
 	sprite.play("empty")
 
 func spawn_coin():
+	coin_sound.play()
 	var coin = COIN_SCENE.instantiate()
 	coin.global_position = global_position + Vector2(0, -16)
 	get_tree().root.add_child(coin)
@@ -52,6 +56,7 @@ func spawn_coin():
 	manager.on_coin_collected()
 	
 func spawn_mushroom():
+	_1_up_appears_sound.play()
 	var shroom = SHROOM_SCENE.instantiate()
 	shroom.global_position = global_position
 	get_tree().root.add_child(shroom)

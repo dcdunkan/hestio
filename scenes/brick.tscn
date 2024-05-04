@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6pb2aj4eta0w"]
+[gd_scene load_steps=7 format=3 uid="uid://6pb2aj4eta0w"]
 
 [ext_resource type="Script" path="res://scripts/brick.gd" id="1_xf5ga"]
 [ext_resource type="Texture2D" uid="uid://b8vjdbmjxpbmj" path="res://assetsx2/Env/OverWorld.png" id="2_8so21"]
 [ext_resource type="Texture2D" uid="uid://gxf8p5fh685o" path="res://assets/blocks/Brick.png" id="2_oqcpl"]
+[ext_resource type="AudioStream" uid="uid://co80tet0bpwad" path="res://assetsx2/Soundfs/bump.mp3" id="4_2g02v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m72v6"]
 size = Vector2(16, 16)
@@ -47,5 +48,8 @@ process_material = SubResource("ParticleProcessMaterial_rpd1s")
 texture = ExtResource("2_oqcpl")
 one_shot = true
 speed_scale = 2.0
+
+[node name="Bump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2g02v")
 
 [connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

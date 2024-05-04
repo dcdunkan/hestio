@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxownos1lxm2s"]
+[gd_scene load_steps=9 format=3 uid="uid://bxownos1lxm2s"]
 
 [ext_resource type="Script" path="res://scripts/level_switcher.gd" id="1_hbmf1"]
 [ext_resource type="Texture2D" uid="uid://dh2n507fr735o" path="res://assetsx2/Env/gate.png" id="2_0cqhh"]
 [ext_resource type="Texture2D" uid="uid://5twh8d5ku7hd" path="res://assetsx2/Env/gate3.png" id="3_r5pny"]
 [ext_resource type="Texture2D" uid="uid://7t5ntjw3hrpm" path="res://assetsx2/Env/gate2.png" id="4_bckg8"]
+[ext_resource type="AudioStream" uid="uid://c1nwt0y1dbsa7" path="res://assetsx2/Soundfs/stage_clear.mp3" id="5_rgoj3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eh0ss"]
 animations = [{
@@ -61,6 +62,9 @@ debug_color = Color(0.947125, 0.070448, 0.546508, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(-9.5, 0)
 shape = SubResource("RectangleShape2D_466jk")
+
+[node name="Stage Clear Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rgoj3")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

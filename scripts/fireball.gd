@@ -27,7 +27,6 @@ func _process(delta):
 	if !is_moving_up:
 		position.y += delta * vertical_speed
 
-
 func _on_area_entered(area):
 	if area is Enemy:
 		area.die_from_hit()

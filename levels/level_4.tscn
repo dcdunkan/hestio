@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bd22s5uekd8t2"]
+[gd_scene load_steps=20 format=3 uid="uid://bd22s5uekd8t2"]
 
 [ext_resource type="Texture2D" uid="uid://bdd1cxw0kih12" path="res://assetsx2/Bgs/mechanical.png" id="1_8olhb"]
+[ext_resource type="Script" path="res://scripts/level_4.gd" id="1_umi2c"]
 [ext_resource type="PackedScene" uid="uid://cyhuabdsq5xb0" path="res://scenes/firestick.tscn" id="5_u60i4"]
 [ext_resource type="PackedScene" uid="uid://bxownos1lxm2s" path="res://scenes/level_switcher.tscn" id="6_jagb0"]
 [ext_resource type="Texture2D" uid="uid://b8vjdbmjxpbmj" path="res://assetsx2/Env/OverWorld.png" id="6_kn4op"]
@@ -9,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://6pb2aj4eta0w" path="res://scenes/brick.tscn" id="12_27mbl"]
 [ext_resource type="PackedScene" uid="uid://cw21d2wt6y7i7" path="res://scenes/goomba.tscn" id="12_jycw2"]
 [ext_resource type="PackedScene" uid="uid://bbu2dtqu3vow6" path="res://scenes/koopa.tscn" id="13_55opg"]
+[ext_resource type="PackedScene" uid="uid://kahb14nseb2d" path="res://resource/sounds.tscn" id="13_mdq8a"]
 [ext_resource type="PackedScene" uid="uid://dr7crf4rx2p5e" path="res://scenes/mystery_box.tscn" id="13_sp3ar"]
-[ext_resource type="PackedScene" uid="uid://dghad5pgax8t8" path="res://scenes/boss_1.tscn" id="13_xxxp6"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="14_l0k83"]
 [ext_resource type="PackedScene" uid="uid://bmpxo04x5rgc" path="res://scenes/MovingFireball.tscn" id="15_ymspw"]
 
@@ -204,7 +205,8 @@ _data = {
 "up and down": SubResource("Animation_jxtaq")
 }
 
-[node name="level_1" type="Node"]
+[node name="level_4" type="Node"]
+script = ExtResource("1_umi2c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-159, 0)
@@ -267,6 +269,7 @@ position = Vector2(-72, -202)
 
 [node name="Koopa3" parent="." instance=ExtResource("13_55opg")]
 position = Vector2(-250, -190)
+is_idle = true
 
 [node name="Brick10" parent="." instance=ExtResource("12_27mbl")]
 position = Vector2(-318, -344)
@@ -327,6 +330,7 @@ rotation = 3.14159
 
 [node name="Koopa" parent="." instance=ExtResource("13_55opg")]
 position = Vector2(109, 53)
+is_idle = true
 
 [node name="Firestick" parent="." instance=ExtResource("5_u60i4")]
 position = Vector2(-180, 90)
@@ -339,9 +343,11 @@ position = Vector2(-361, -305)
 
 [node name="Goomba" parent="." instance=ExtResource("12_jycw2")]
 position = Vector2(105, -121)
+is_idle = true
 
 [node name="Goomba2" parent="." instance=ExtResource("12_jycw2")]
 position = Vector2(62, -121)
+is_idle = true
 
 [node name="Firestick2" parent="." instance=ExtResource("5_u60i4")]
 position = Vector2(87, -102)
@@ -359,7 +365,6 @@ position = Vector2(-88, -393)
 
 [node name="Koopa2" parent="." instance=ExtResource("13_55opg")]
 position = Vector2(94, -334)
+is_idle = true
 
-[node name="Boss_AIML" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("13_xxxp6")]
-position = Vector2(159, -388)
-camera = NodePath("../Camera2D")
+[node name="Sounds" parent="." instance=ExtResource("13_mdq8a")]

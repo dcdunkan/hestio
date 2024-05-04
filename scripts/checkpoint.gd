@@ -6,7 +6,7 @@ var checked = false
 @onready var flag_sprite = $AnimatedSprite2D
 @onready var area_2d = $Area2D
 
-func _process(delta):
+func _process(_delta):
 	if not checked:
 		flag_sprite.play("no-flag")
 

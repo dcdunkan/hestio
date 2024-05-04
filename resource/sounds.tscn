@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://kahb14nseb2d"]
+
+[ext_resource type="AudioStream" uid="uid://denojc8ivkla8" path="res://assetsx2/Soundfs/jump_short.mp3" id="1_x8bwg"]
+[ext_resource type="AudioStream" uid="uid://7d7rx2whpqv8" path="res://assetsx2/Soundfs/jump_super.mp3" id="2_mufl6"]
+[ext_resource type="AudioStream" uid="uid://4ljpjhf45i3x" path="res://assetsx2/Soundfs/stomp.mp3" id="3_yeqch"]
+[ext_resource type="AudioStream" uid="uid://dttkoskmoanwq" path="res://assetsx2/Soundfs/die.mp3" id="4_jwlgd"]
+[ext_resource type="AudioStream" uid="uid://ci5t5lk7ehduv" path="res://assetsx2/Soundfs/1up.mp3" id="5_iv5ve"]
+[ext_resource type="AudioStream" uid="uid://b1ohouolajmoj" path="res://assetsx2/Music/mariotheme.mp3" id="6_f284w"]
+
+[node name="Sounds" type="Node"]
+
+[node name="JumpShort" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_x8bwg")
+
+[node name="JumpLong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_mufl6")
+
+[node name="Stomp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yeqch")
+
+[node name="Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jwlgd")
+
+[node name="1UpEats" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_iv5ve")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_f284w")
+autoplay = true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq5jxedo4m7nw"]
+
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_0dtxg"]
+[ext_resource type="Texture2D" uid="uid://bg4xin06jgkum" path="res://assetsx2/Chars/gun.png" id="1_o461c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5oxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o461c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8atp"]
+size = Vector2(15, 24)
+
+[node name="Cannon" type="StaticBody2D"]
+collision_layer = 22
+collision_mask = 63
+script = ExtResource("1_0dtxg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t5oxa")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_u8atp")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

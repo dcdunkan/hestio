@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://mytjwgnuc4r4"]
+
+[ext_resource type="FontFile" uid="uid://2lqhy7e5t254" path="res://assets/fonts/font.ttf" id="1_1rtv5"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_x1wyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4lwy"]
+bg_color = Color(0, 0.33023, 0.795208, 1)
+shadow_color = Color(0.285508, 0.160463, 0.0326257, 0.6)
+shadow_size = 16
+shadow_offset = Vector2(19, 22)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_x1wyw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1rtv5")
+theme_override_font_sizes/font_size = 28
+text = "SCORE: 00000000"
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1rtv5")
+theme_override_font_sizes/font_size = 28
+text = "COINS: 0"
+
+[node name="OverlayScreen" type="CenterContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer/OverlayScreen"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p4lwy")
+
+[node name="OverlayScreenLabel" type="Label" parent="MarginContainer/OverlayScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.0
+offset_top = 71.0
+offset_right = 170.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_1rtv5")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
