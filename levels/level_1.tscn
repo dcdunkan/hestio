@@ -288,8 +288,9 @@ position = Vector2(-72, 24)
 [node name="MysteryBox4" parent="Blocks" instance=ExtResource("12_qhfqe")]
 position = Vector2(881, -23)
 
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("player") groups=["level_manager"]]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("hud", "player") groups=["level_manager"]]
 script = ExtResource("13_e058l")
+hud = NodePath("../HUD")
 player = NodePath("../Player")
 
 [node name="HUD" parent="." instance=ExtResource("14_yr5ik")]

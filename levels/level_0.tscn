@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://djojcjabgt4wv"]
+[gd_scene load_steps=5 format=3 uid="uid://djojcjabgt4wv"]
+
+[ext_resource type="Texture2D" uid="uid://ckv67byqg0uc5" path="res://assetsx2/Elements/logofinal.png" id="1_1xij1"]
+[ext_resource type="Script" path="res://scripts/level_0.gd" id="1_l580x"]
+[ext_resource type="Texture2D" uid="uid://ddyjqt3bc5ay8" path="res://assetsx2/Bgs/cloud.png" id="2_32s70"]
+[ext_resource type="FontFile" uid="uid://2lqhy7e5t254" path="res://assets/fonts/font.ttf" id="3_67xfp"]
 
 [node name="level_0" type="Node2D"]
+script = ExtResource("1_l580x")
+
+[node name="Cloud" type="Sprite2D" parent="."]
+position = Vector2(1002, 830)
+scale = Vector2(1.498, 1.691)
+texture = ExtResource("2_32s70")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+
+[node name="Logofinal" type="Node2D" parent="."]
+position = Vector2(576, -10)
+
+[node name="Logo" type="Sprite2D" parent="Logofinal"]
+position = Vector2(0, -112)
+scale = Vector2(0.51978, 0.51978)
+texture = ExtResource("1_1xij1")
+
+[node name="Start Instruction" type="Label" parent="Logofinal"]
+visible = false
+offset_left = -256.0
+offset_top = 45.0
+offset_right = 262.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("3_67xfp")
+theme_override_font_sizes/font_size = 40
+text = "PRESS SPACE TO START"
+horizontal_alignment = 1
+vertical_alignment = 1

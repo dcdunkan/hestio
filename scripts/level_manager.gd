@@ -1,21 +1,21 @@
 extends Node
 
 const PATH_PREFIX = "res://levels/level_%d.tscn"
-@export var TOTAL_LEVELS = 6 # 6
+@export var TOTAL_LEVELS = 6
 
-@onready var hud = $"../HUD"
+@export var hud: HUD
 var current_checkpoint: Checkpoint
 @export var player: Player
 
 var points = 0
 var coins = 0
-var current_level = 1
+var current_level = 0
 
 func on_coin_collected():
 	coins += 1
 	hud.set_coins(coins)
 
-func on_points_sdcored(points_scored: int):
+func on_points_scored(points_scored: int):
 	points += points_scored
 	hud.set_score(points)
 	

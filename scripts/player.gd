@@ -158,7 +158,9 @@ func spawn_points_label(enemy: Enemy):
 		points_label.set_points(enemy.points_value)
 		points_label.position = enemy.position + Vector2(-20, -20)
 		get_tree().root.add_child(points_label)
-		LevelManager.on_points_scored(enemy.points_value)
+		#LevelManager.on_points_scored(enemy.points_value)
+		var manager = get_tree().get_first_node_in_group("level_manager") as LevelManager
+		manager.on_points_scored(enemy.points_value)
 
 func on_enemy_stomped():
 	stomp_sound.play()
@@ -178,7 +180,6 @@ func die(show_animation: bool):
 		death_tween.tween_property(self, "position", position + Vector2(0, -48), 0.5)
 		death_tween.chain().tween_property(self, "position", position + Vector2(0, 256), 1)
 		await death_tween.finished
-	
 	
 	#await get_tree().create_timer(5.0).timeout
 	reset_player()
