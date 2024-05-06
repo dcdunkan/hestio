@@ -1,8 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var max_lives = 3
-var lives = 3
+var lives = 0
 
 var can_fireball = false
 
@@ -46,6 +45,8 @@ const FIREBALL_SCENE = preload("res://scenes/fireball.tscn")
 var should_accept_input = true
 
 func _ready():
+	lives = Data.xlives
+	LevelManager.set_lives(lives)
 	LevelManager.player = self
 	camera_sync.global_position.x = global_position.x
 	camera_sync.global_position.y = global_position.y - (camera_sync.get_viewport_rect().size.y / 2 / camera_sync.zoom.y) + 50
@@ -70,8 +71,7 @@ func _physics_process(delta):
 	if should_accept_input and Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 		jump_short_sound.stop()
-		jump_long_sound.play(0.1)
-		
+		jump_long_sound.play(0.10)
 	
 	var direction = Input.get_axis("left", "right")
 	if direction and should_accept_input:
@@ -128,7 +128,7 @@ func _on_area_2d_area_entered(area):
 func handle_enemy_collision(enemy: Enemy):
 	if enemy == null and lives == 0:
 		return
-		
+
 	if is_instance_of(enemy, Koopa) and (enemy as Koopa).in_a_shell:
 		(enemy as Koopa).on_stomp(global_position)
 		spawn_points_label(enemy)
@@ -145,8 +145,9 @@ func handle_enemy_collision(enemy: Enemy):
 
 func handle_shroom_collision(_area: Shroom):
 	_1_up_eats_sound.play()
-	if lives != max_lives:
+	if lives != Data.MAX_LIVES:
 		lives = lives + 1
+	LevelManager.set_lives(lives)
 
 func handle_flower_collision():
 	if not can_fireball:
@@ -158,7 +159,6 @@ func spawn_points_label(enemy: Enemy):
 		points_label.set_points(enemy.points_value)
 		points_label.position = enemy.position + Vector2(-20, -20)
 		get_tree().root.add_child(points_label)
-		#LevelManager.on_points_scored(enemy.points_value)
 		var manager = get_tree().get_first_node_in_group("level_manager") as LevelManager
 		manager.on_points_scored(enemy.points_value)
 
@@ -170,7 +170,6 @@ func die(show_animation: bool):
 	area_2d.set_collision_mask_value(3, false)
 	set_collision_layer_value(1, false)
 	die_sound.play()
-	lives = lives - 1
 	sprite.play("death")
 	should_camera_sync = false
 	set_physics_process(false)
@@ -184,15 +183,22 @@ func die(show_animation: bool):
 	#await get_tree().create_timer(5.0).timeout
 	reset_player()
 	should_camera_sync = true
-	
 
 func reset_player():
+	if lives - 1 == 0:
+		LevelManager.goto_level(0)
+		LevelManager.set_lives(Data.MAX_LIVES)
+		return
+	
+	lives -= 1
+	LevelManager.set_lives(lives)
+
 	if LevelManager.current_checkpoint != null:
 		LevelManager.respawn_player()
 		print("respawning at checkpoint")
 	else:
 		print("no checkpoints: should respawn at the beginning or say game over")
-		get_tree().reload_current_scene()
+		LevelManager.goto_level(LevelManager.current_level)
 	
 	area_2d.set_collision_mask_value(3, true)
 	set_collision_layer_value(1, true)
@@ -207,8 +213,8 @@ func handle_movement_collision(collision: KinematicCollision2D):
 			(collision.get_collider() as Block).bump()
 
 func shoot():
-	sprite.play("shoot")
-	set_physics_process(false)
+	#sprite.play("shoot")
+	#set_physics_process(false)
 	
 	var fireball = FIREBALL_SCENE.instantiate()
 	fireball.direction = sign(sprite.scale.x)

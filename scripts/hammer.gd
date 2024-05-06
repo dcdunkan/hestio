@@ -14,8 +14,15 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
+		for child in get_tree().root.get_children():
+			if child is Hammer:
+				child.queue_free()
+		
 		(body as Player).die(true)
 		queue_free()
-
+		
 func _on_area_entered(_area):
+	queue_free()
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()

@@ -40,6 +40,12 @@ theme_override_fonts/font = ExtResource("1_1rtv5")
 theme_override_font_sizes/font_size = 28
 text = "COINS: 0"
 
+[node name="LivesLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1rtv5")
+theme_override_font_sizes/font_size = 28
+text = "LIVES: 00"
+
 [node name="OverlayScreen" type="CenterContainer" parent="MarginContainer"]
 visible = false
 layout_mode = 2

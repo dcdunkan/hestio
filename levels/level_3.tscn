@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gspktx65y0s2"]
+[gd_scene load_steps=24 format=3 uid="uid://gspktx65y0s2"]
 
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_s1orr"]
 [ext_resource type="Texture2D" uid="uid://ddyjqt3bc5ay8" path="res://assetsx2/Bgs/cloud.png" id="1_v0jd5"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5yaui2s0hue" path="res://scenes/static_spike.tscn" id="15_ac8iu"]
 [ext_resource type="PackedScene" uid="uid://bmpxo04x5rgc" path="res://scenes/MovingFireball.tscn" id="15_uvvrk"]
 [ext_resource type="PackedScene" uid="uid://kahb14nseb2d" path="res://resource/sounds.tscn" id="16_cjuct"]
+[ext_resource type="PackedScene" uid="uid://mytjwgnuc4r4" path="res://scenes/hud.tscn" id="18_pnwnd"]
 [ext_resource type="PackedScene" uid="uid://bbu2dtqu3vow6" path="res://scenes/koopa.tscn" id="19_8l1eu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1fke4"]
@@ -134,7 +135,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(232.19, -242.877)]
+"values": [Vector2(232.19, -275)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,12 +147,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(286, -203)]
+"values": [Vector2(286, -276)]
 }
 
 [sub_resource type="Animation" id="Animation_3mw4j"]
 resource_name = "fireball"
-length = 2.0
+length = 3.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -160,10 +161,10 @@ tracks/0/path = NodePath("../MovingFireball:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(232.19, -242.877), Vector2(232.19, -190), Vector2(232.19, -156)]
+"values": [Vector2(232.19, -285), Vector2(232.19, -157)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -172,10 +173,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(286, -243), Vector2(286, -203), Vector2(286, -162)]
+"values": [Vector2(289, -154), Vector2(286, -272)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pxg15"]
@@ -208,12 +209,6 @@ position = Vector2(-24, 196)
 
 [node name="Brick2" parent="TextureRect2" instance=ExtResource("12_w1huh")]
 position = Vector2(-8, 196)
-
-[node name="Brick11" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(-11, 110)
-
-[node name="Brick12" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(5, 110)
 
 [node name="Brick9" parent="TextureRect2" instance=ExtResource("12_w1huh")]
 position = Vector2(54, 165)
@@ -266,33 +261,6 @@ position = Vector2(324, 73)
 [node name="Brick15" parent="TextureRect2" instance=ExtResource("12_w1huh")]
 position = Vector2(356, 73)
 
-[node name="Brick16" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(-24, 196)
-
-[node name="Brick17" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(-8, 196)
-
-[node name="Brick18" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(-11, 110)
-
-[node name="Brick19" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(5, 110)
-
-[node name="Brick20" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(54, 165)
-
-[node name="Brick21" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(70, 165)
-
-[node name="Brick22" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(51, 237)
-
-[node name="Brick23" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(67, 237)
-
-[node name="Brick24" parent="TextureRect2" instance=ExtResource("12_w1huh")]
-position = Vector2(167, 73)
-
 [node name="Brick25" parent="TextureRect2" instance=ExtResource("12_w1huh")]
 position = Vector2(231, 25)
 
@@ -335,10 +303,10 @@ layer_0/tile_data = PackedInt32Array(393199, 1, 0, 458735, 1, 0, 524271, 1, 0, 5
 position = Vector2(926, -249)
 
 [node name="Checkpoint" parent="." instance=ExtResource("9_ofl5h")]
-position = Vector2(-170, -164)
+position = Vector2(-171, -164)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_objr1")]
-position = Vector2(623, -212)
+position = Vector2(-269, 54)
 collision_mask = 22
 camera_sync = NodePath("../Camera2D")
 
@@ -346,8 +314,10 @@ camera_sync = NodePath("../Camera2D")
 
 [node name="Blocks" type="Node" parent="."]
 
-[node name="LevelManager" type="Node" parent="." groups=["level_manager"]]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("hud", "player") groups=["level_manager"]]
 script = ExtResource("13_ki5bk")
+hud = NodePath("../HUD")
+player = NodePath("../Player")
 
 [node name="MysteryBox" parent="." instance=ExtResource("13_1kls2")]
 position = Vector2(-302, 30)
@@ -387,6 +357,7 @@ is_idle = true
 [node name="Piranha2" parent="." instance=ExtResource("3_tc0pt")]
 position = Vector2(262, -156)
 collision_mask = 3
+vertical_speed = 0
 is_idle = true
 
 [node name="Piranha3" parent="." instance=ExtResource("3_tc0pt")]
@@ -394,18 +365,18 @@ position = Vector2(316, -155)
 collision_mask = 3
 is_idle = true
 
-[node name="MovingFireball2" parent="." instance=ExtResource("15_uvvrk")]
-position = Vector2(286, -203)
-rotation = 3.14159
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingFireball2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MovingFireball2")
 libraries = {
 "": SubResource("AnimationLibrary_pxg15")
 }
 autoplay = "up and downl"
 
+[node name="MovingFireball2" parent="." instance=ExtResource("15_uvvrk")]
+position = Vector2(286, -276)
+
 [node name="MovingFireball" parent="." instance=ExtResource("15_uvvrk")]
-position = Vector2(232.19, -242.877)
+position = Vector2(232.19, -275)
 rotation = 3.14159
 
 [node name="Brick" parent="." instance=ExtResource("12_w1huh")]
@@ -415,9 +386,13 @@ position = Vector2(328, -200)
 position = Vector2(344, -200)
 
 [node name="Koopa" parent="." instance=ExtResource("19_8l1eu")]
-position = Vector2(472, -162)
+position = Vector2(435, -175)
+is_idle = true
 
 [node name="Koopa2" parent="." instance=ExtResource("19_8l1eu")]
-position = Vector2(498, -162)
+position = Vector2(498, -172)
+is_idle = true
 
 [node name="Sounds" parent="." instance=ExtResource("16_cjuct")]
+
+[node name="HUD" parent="." instance=ExtResource("18_pnwnd")]

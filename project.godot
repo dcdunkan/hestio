@@ -13,15 +13,21 @@ config_version=5
 config/name="hestio_new"
 run/main_scene="res://levels/level_0.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Ph03nyx-Super-Mario-Paper-Mario.svg"
 
 [autoload]
 
 LevelManager="*res://scripts/level_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Data="*res://scripts/data.gd"
+
+[dialogue_manager]
+
+general/balloon_path="res://assetsx2/dialoguemanager/balloon.tscn"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor]
@@ -58,7 +64,8 @@ jump={
 }
 shoot={
 "deadzone": 0.5,
-"events": []
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
+]
 }
 start={
 "deadzone": 0.5,
@@ -66,6 +73,10 @@ start={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("<null>", "res://assetsx2/DIalogues/tkmview.dialogue", "res://assetsx2/DIalogues/degree.dialogue", "res://assetsx2/DIalogues/dsabattle.dialogue", "res://assetsx2/DIalogues/main.dialogue", "res://assetsx2/DIalogues/aiml.dialogue")
 
 [layer_names]
 
@@ -80,4 +91,5 @@ start={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.341176, 0.721569, 0.980392, 1)

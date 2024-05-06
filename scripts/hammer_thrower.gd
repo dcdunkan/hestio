@@ -26,11 +26,8 @@ func _on_reload_timer_timeout():
 	reload_hammer_count()
 
 func _on_throw_timer_timeout():
-	print("trying to throw")
 	if hammers == 0 or not can_throw:
 		return
-		
-	print("thrown")
 
 	hammers -= 1
 	var hammer = HAMMER_SCENE.instantiate()
@@ -40,7 +37,7 @@ func _on_throw_timer_timeout():
 	hammer.target_point.x = randf_range(hammer.target_point.x - 30, hammer.target_point.x + 30)
 	hammer.target_point.y = randf_range(hammer.target_point.y - 30, hammer.target_point.y + 30)
 	get_tree().root.add_child(hammer)
-
+	
 func die():
 	super.die()
 	set_collision_layer_value(3, false)

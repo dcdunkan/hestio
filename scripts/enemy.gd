@@ -20,14 +20,21 @@ var is_inhaling = true
 
 var ignore_left_collision = false
 var ignore_right_collision = true
+var collision_limit = 3
+var collided = 0
+
+var is_visible = false
 
 func _process(delta):
+	if is_instance_of(self, Koopa) and collided == collision_limit:
+		queue_free()
 	if not down_ray_cast.is_colliding() and not is_idle_animation_playing:
 		position.y += delta * vertical_speed
 	if not is_idle:
 		position.x -= delta * horizontal_speed
 		# the looped left right collision movements
 		if (left_ray_cast.is_colliding() and not ignore_left_collision) or (right_ray_cast.is_colliding() and not ignore_right_collision):
+			collided += 1
 			horizontal_speed = -horizontal_speed
 			ignore_left_collision = !ignore_left_collision
 			ignore_right_collision = !ignore_right_collision
@@ -56,6 +63,9 @@ func die_from_hit():
 	var die_tween = get_tree().create_tween()
 	die_tween.tween_property(self, "position", position + Vector2(0, -25), 0.2)
 	die_tween.chain().tween_property(self, "position", position + Vector2(0, 500), 4)
+	die_tween.tween_callback(func ():
+		queue_free()
+	)
 	
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	points_label.set_points(points_value)
@@ -66,5 +76,9 @@ func _on_area_entered(area):
 	if area is Koopa and (area as Koopa).in_a_shell and (area as Koopa).horizontal_speed != 0:
 		die_from_hit()
 
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	set_process(true)
+
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	set_process(false)
 	queue_free()

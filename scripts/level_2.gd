@@ -24,7 +24,8 @@ func _on_animation_start_entrance_area_body_entered(player):
 		)
 		await zoom_out_animation.finished
 		
-		await get_tree().create_timer(4.0).timeout
+		DialogueManager.show_dialogue_balloon(load("res://assetsx2/DIalogues/tkmview.dialogue"))
+		await get_tree().create_timer(10.0).timeout
 		
 		player_sprite.play("run")
 		

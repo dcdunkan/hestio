@@ -8,7 +8,9 @@ class_name LevelSwitcher
 func _on_area_2d_area_entered(area: Area2D):
 	if area.get_parent() is Player:
 		await get_tree().create_timer(5.0).timeout
-		LevelManager.goto_next_level()
+		if (LevelManager.current_level == 6):
+			LevelManager.goto_level(0)
+		else: LevelManager.goto_next_level()
 
 func _on_area_2d_2_body_entered(body):
 	if body is Player:

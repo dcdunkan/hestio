@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kahb14nseb2d"]
+[gd_scene load_steps=8 format=3 uid="uid://kahb14nseb2d"]
 
 [ext_resource type="AudioStream" uid="uid://denojc8ivkla8" path="res://assetsx2/Soundfs/jump_short.mp3" id="1_x8bwg"]
 [ext_resource type="AudioStream" uid="uid://7d7rx2whpqv8" path="res://assetsx2/Soundfs/jump_super.mp3" id="2_mufl6"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dttkoskmoanwq" path="res://assetsx2/Soundfs/die.mp3" id="4_jwlgd"]
 [ext_resource type="AudioStream" uid="uid://ci5t5lk7ehduv" path="res://assetsx2/Soundfs/1up.mp3" id="5_iv5ve"]
 [ext_resource type="AudioStream" uid="uid://b1ohouolajmoj" path="res://assetsx2/Music/mariotheme.mp3" id="6_f284w"]
+[ext_resource type="AudioStream" uid="uid://m67cl60faa3u" path="res://assetsx2/Soundfs/world_clear.mp3" id="7_u2p85"]
 
 [node name="Sounds" type="Node"]
 
@@ -27,3 +28,6 @@ stream = ExtResource("5_iv5ve")
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_f284w")
 autoplay = true
+
+[node name="wordlclear" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_u2p85")

@@ -28,6 +28,9 @@ func _process(delta):
 		position.y += delta * vertical_speed
 
 func _on_area_entered(area):
+	if area is Piranha:
+		queue_free()
+		return
 	if area is Enemy:
 		area.die_from_hit()
 	queue_free()

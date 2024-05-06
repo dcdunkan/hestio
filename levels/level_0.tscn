@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://djojcjabgt4wv"]
+[gd_scene load_steps=6 format=3 uid="uid://djojcjabgt4wv"]
 
 [ext_resource type="Texture2D" uid="uid://ckv67byqg0uc5" path="res://assetsx2/Elements/logofinal.png" id="1_1xij1"]
 [ext_resource type="Script" path="res://scripts/level_0.gd" id="1_l580x"]
 [ext_resource type="Texture2D" uid="uid://ddyjqt3bc5ay8" path="res://assetsx2/Bgs/cloud.png" id="2_32s70"]
 [ext_resource type="FontFile" uid="uid://2lqhy7e5t254" path="res://assets/fonts/font.ttf" id="3_67xfp"]
+[ext_resource type="AudioStream" uid="uid://do0hxj6jqrv4u" path="res://assetsx2/Music/menumusic.mp3" id="5_vooly"]
 
 [node name="level_0" type="Node2D"]
 script = ExtResource("1_l580x")
@@ -33,6 +34,10 @@ offset_right = 262.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("3_67xfp")
 theme_override_font_sizes/font_size = 40
-text = "PRESS SPACE TO START"
+text = "PRESS START"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="startmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vooly")
+autoplay = true

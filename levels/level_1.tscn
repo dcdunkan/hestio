@@ -188,7 +188,7 @@ layer_0/tile_data = PackedInt32Array(393215, 5, 0, 458751, 5, 0, 524287, 5, 0, 3
 position = Vector2(1332, 40)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_6h3u0")]
-position = Vector2(-32, 60)
+position = Vector2(-72, 70)
 collision_mask = 22
 camera_sync = NodePath("../Camera2D")
 
@@ -196,13 +196,13 @@ camera_sync = NodePath("../Camera2D")
 
 [node name="Goomba" parent="Enemies" instance=ExtResource("8_e836x")]
 position = Vector2(187, 62)
-is_idle = true
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("8_e836x")]
 position = Vector2(683, 62)
 
 [node name="Goomba3" parent="Enemies" instance=ExtResource("8_e836x")]
 position = Vector2(913, 62)
+is_idle = true
 
 [node name="Goomba4" parent="Enemies" instance=ExtResource("8_e836x")]
 position = Vector2(963, 62)

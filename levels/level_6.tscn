@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bir2orfh6vc7h"]
+[gd_scene load_steps=31 format=3 uid="uid://bir2orfh6vc7h"]
 
 [ext_resource type="Script" path="res://scripts/level_6.gd" id="1_81g35"]
 [ext_resource type="Texture2D" uid="uid://ddyjqt3bc5ay8" path="res://assetsx2/Bgs/cloud.png" id="1_cekr6"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://kahb14nseb2d" path="res://resource/sounds.tscn" id="17_4808c"]
 [ext_resource type="PackedScene" uid="uid://bxownos1lxm2s" path="res://scenes/level_switcher.tscn" id="18_jrrmy"]
 [ext_resource type="AudioStream" uid="uid://0jps45owco14" path="res://assetsx2/Music/finalboss.mp3" id="21_008es"]
+[ext_resource type="PackedScene" uid="uid://mytjwgnuc4r4" path="res://scenes/hud.tscn" id="21_mt36r"]
+[ext_resource type="PackedScene" uid="uid://bxhfqi44svsw7" path="res://scenes/checkpoint.tscn" id="22_nvq8k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sj7lx"]
 texture = ExtResource("2_2evsr")
@@ -197,6 +199,116 @@ sources/0 = SubResource("TileSetAtlasSource_sj7lx")
 sources/1 = SubResource("TileSetAtlasSource_oq7al")
 sources/2 = SubResource("TileSetAtlasSource_ut8kp")
 
+[sub_resource type="Animation" id="Animation_mhtas"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(209, 77)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MovingFireball3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(304, 77)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MovingFireball2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MovingFireball4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(936, 104)]
+}
+
+[sub_resource type="Animation" id="Animation_ilvvn"]
+resource_name = "up and down"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(209, 77), Vector2(209, 32), Vector2(209, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MovingFireball2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(256, 0), Vector2(256, 32), Vector2(256, 72)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MovingFireball3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(304, 77), Vector2(304, 32), Vector2(304, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MovingFireball4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(936, 104), Vector2(936, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8k1t"]
+_data = {
+"RESET": SubResource("Animation_mhtas"),
+"up and down": SubResource("Animation_ilvvn")
+}
+
 [sub_resource type="GDScript" id="GDScript_yqbf2"]
 script/source = "extends Node
 
@@ -227,8 +339,11 @@ layer_0/tile_data = PackedInt32Array(393202, 131072, 3, 393203, 196608, 3, 39320
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.75, 2.75)
 
+[node name="LevelSwitcher2" parent="." instance=ExtResource("18_jrrmy")]
+position = Vector2(2499, 48)
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_2xswc")]
-position = Vector2(1776, 48)
+position = Vector2(-64, 72)
 collision_mask = 22
 camera_sync = NodePath("../Camera2D")
 
@@ -269,8 +384,10 @@ position = Vector2(272, 32)
 [node name="Brick11" parent="Blocks" instance=ExtResource("11_um7dh")]
 position = Vector2(288, 32)
 
-[node name="LevelManager" type="Node" parent="." groups=["level_manager"]]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("hud", "player") groups=["level_manager"]]
 script = ExtResource("13_rumpj")
+hud = NodePath("../HUD")
+player = NodePath("../Player")
 
 [node name="MysteryBox" parent="." instance=ExtResource("12_pf2uf")]
 position = Vector2(-56, 0)
@@ -297,8 +414,15 @@ position = Vector2(160, 74)
 [node name="MovingFireball" parent="." instance=ExtResource("11_ehxwb")]
 position = Vector2(209, 77)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingFireball"]
+libraries = {
+"": SubResource("AnimationLibrary_y8k1t")
+}
+autoplay = "up and down"
+
 [node name="MovingFireball2" parent="." instance=ExtResource("11_ehxwb")]
-position = Vector2(256, 77)
+position = Vector2(256, 32)
+rotation = -3.14159
 
 [node name="MovingFireball3" parent="." instance=ExtResource("11_ehxwb")]
 position = Vector2(304, 77)
@@ -320,9 +444,6 @@ position = Vector2(760, 32)
 
 [node name="MysteryBox8" parent="." instance=ExtResource("12_pf2uf")]
 position = Vector2(1096, 48)
-
-[node name="Brick3" parent="." instance=ExtResource("11_um7dh")]
-position = Vector2(776, 32)
 
 [node name="Brick4" parent="." instance=ExtResource("11_um7dh")]
 position = Vector2(792, 32)
@@ -355,8 +476,9 @@ position = Vector2(1381, 48)
 position = Vector2(936, 104)
 
 [node name="HammerThrower" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_707tn")]
-position = Vector2(1288, 48)
+position = Vector2(1288, 32)
 player = NodePath("../Player")
+is_idle = true
 
 [node name="MysteryBox10" parent="." instance=ExtResource("12_pf2uf")]
 position = Vector2(1584, 48)
@@ -380,13 +502,14 @@ position = Vector2(1495, 76)
 position = Vector2(1808, 96)
 
 [node name="Cannon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ncn6y")]
-position = Vector2(1859, 25)
-rotation = -1.57079
+z_index = 2
+position = Vector2(1896, 56)
+rotation = -3.14159
 player = NodePath("../Player")
 
 [node name="Cannon2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ncn6y")]
-position = Vector2(1885, 26)
-rotation = 1.57079
+z_index = 2
+position = Vector2(1896, 80)
 player = NodePath("../Player")
 
 [node name="Goomba2" parent="." instance=ExtResource("8_bokgm")]
@@ -408,9 +531,15 @@ is_idle = true
 [node name="Sounds" parent="." instance=ExtResource("17_4808c")]
 script = SubResource("GDScript_yqbf2")
 
-[node name="LevelSwitcher" parent="." instance=ExtResource("18_jrrmy")]
-visible = false
-position = Vector2(2592, -1016)
+[node name="WorldClear" type="AudioStreamPlayer2D" parent="."]
 
 [node name="BossTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_008es")
+
+[node name="HUD" parent="." instance=ExtResource("21_mt36r")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("22_nvq8k")]
+position = Vector2(1088, 24)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("22_nvq8k")]
+position = Vector2(2144, 56)
